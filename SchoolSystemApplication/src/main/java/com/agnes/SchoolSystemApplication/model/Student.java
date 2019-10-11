@@ -1,5 +1,7 @@
 package com.agnes.SchoolSystemApplication.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,17 +23,19 @@ import java.util.Date;
         @NamedQuery(name = "NQ_FINDBYREGNO",
                 query = "SELECT s from Student s where s.registrationNumber = :registrationNumber")
 
-})
+ })
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true)
     private String registrationNumber;
     @Embedded
     private Name name;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone = "Africa/Nairobi")
     private Date dateOfBirth;
     @ManyToOne
     private Course course;
@@ -92,5 +96,18 @@ public class Student {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", registrationNumber='" + registrationNumber + '\'' +
+                ", name=" + name +
+                ", gender=" + gender +
+                ", dateOfBirth=" + dateOfBirth +
+                ", course=" + course +
+                ", address=" + address +
+                '}';
     }
 }

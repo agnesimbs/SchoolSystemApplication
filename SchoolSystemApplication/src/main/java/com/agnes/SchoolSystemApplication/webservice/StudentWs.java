@@ -1,7 +1,5 @@
 package com.agnes.SchoolSystemApplication.webservice;
 
-
-import com.agnes.SchoolSystemApplication.bean.BeanI;
 import com.agnes.SchoolSystemApplication.bean.StudentBeanI;
 import com.agnes.SchoolSystemApplication.model.Student;
 import com.google.gson.Gson;
@@ -58,7 +56,7 @@ public class StudentWs {
     }
 
 
-    //REQUIRED BY FINANCE MODULE
+    //REQUIRED BY FINANCE MODULE,LIBRARY MODULE,EXAM MODULE
     @POST
     @Path("/findStudentByRegistrationNumber")
     @Produces(MediaType.APPLICATION_JSON)

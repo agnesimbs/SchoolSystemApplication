@@ -5,6 +5,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tbl_course_units")
 
+@NamedQueries(value = {
+        @NamedQuery(
+                name="NQ_FINDBYUNITCODE",
+                query = "select u from Unit u where u.unitCode=:unitCode"
+        )
+
+})
 public class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,5 +51,15 @@ public class Unit {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "Unit{" +
+                "id=" + id +
+                ", unitCode='" + unitCode + '\'' +
+                ", unitName='" + unitName + '\'' +
+                ", course=" + course +
+                '}';
     }
 }
