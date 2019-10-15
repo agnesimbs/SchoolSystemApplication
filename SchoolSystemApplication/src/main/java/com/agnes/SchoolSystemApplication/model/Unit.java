@@ -16,6 +16,7 @@ public class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true)
     private String unitCode;
     private String unitName;
     @ManyToOne

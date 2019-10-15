@@ -4,6 +4,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tbl_courses")
+@NamedQueries(value = {
+        @NamedQuery( name="NQ_FINDBYCOURSEID",
+                query = "select u from Course u where u.id=:id")
+
+})
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
