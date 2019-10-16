@@ -46,7 +46,7 @@ public class Bean<T> implements BeanI<T> {
         try {
             return entityManager.createQuery("select t from " + entityClass.getSimpleName() + " t where t.deleted = 'false'").getResultList();
 
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
 

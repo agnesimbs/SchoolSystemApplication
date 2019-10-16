@@ -1,6 +1,7 @@
 package com.agnes.SchoolSystemApplication.bean;
 
 
+import com.agnes.SchoolSystemApplication.exception.NonUniqueResultException;
 import com.agnes.SchoolSystemApplication.model.Student;
 
 import javax.annotation.PostConstruct;
@@ -9,10 +10,7 @@ import javax.ejb.Local;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.persistence.Inheritance;
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
-import javax.persistence.PersistenceContext;
-import java.sql.SQLException;
+
 import java.util.List;
 @Inheritance
 @Local
@@ -32,7 +30,7 @@ public class StudentBean extends Bean<Student> implements StudentBeanI{
     }
 
     @Override
-    public Student findByRegistrationNo(String registrationNumber) {
+    public Student findByRegistrationNo(String registrationNumber) throws NonUniqueResultException {
             List<Student> student=
                  this.entityManager
                         .createNamedQuery("NQ_FINDBYREGNO",Student.class)
