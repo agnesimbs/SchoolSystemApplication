@@ -1,10 +1,10 @@
 package com.agnes.SchoolSystemApplication.webservice;
 
 import com.agnes.SchoolSystemApplication.bean.StudentBeanI;
+import com.agnes.SchoolSystemApplication.model.CustomResponse;
 import com.agnes.SchoolSystemApplication.model.Student;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
-
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -23,30 +23,23 @@ public class StudentWs {
 
     @Produces(MediaType.APPLICATION_JSON)
     public Response add(String json) {
+        CustomResponse customResponse=new CustomResponse();
+
         Gson gson = new Gson();
         Student student = gson.fromJson(json, Student.class);
         student = studentBeanI.add(student);
-        return Response.ok().entity(student).build();
+        customResponse.setStatus(true);
+        customResponse.setData(student);
+        customResponse.setMessage("Created Student Successfully");
+        return Response.ok().entity(customResponse).build();
     }
 
-    @POST
-    @Path("/edit")
-
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(String json) {
-        Gson gson = new Gson();
-        Student student = gson.fromJson(json, Student.class);
-        student = studentBeanI.edit(student);
-        return Response.ok().entity(student).build();
-    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/findAll")
     public Response readProductList() throws SQLException {
-        List<Student> students = studentBeanI.getStudentList();
-        return Response.ok().entity(students).build();
-
+       return Response.ok().entity(studentBeanI.findAll()).build();
     }
 
     @PUT

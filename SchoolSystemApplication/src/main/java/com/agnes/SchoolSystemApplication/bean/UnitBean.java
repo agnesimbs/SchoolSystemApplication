@@ -1,12 +1,12 @@
 package com.agnes.SchoolSystemApplication.bean;
 
-import com.agnes.SchoolSystemApplication.model.Student;
 import com.agnes.SchoolSystemApplication.model.Unit;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.NonUniqueResultException;
+import java.sql.SQLException;
 import java.util.List;
 @Local
 @Stateless
@@ -32,5 +32,10 @@ public void init(){this.entityClass=Unit.class;}
 
         }
 
+    }
+
+    @Override
+    public List<Unit> getUnitList() throws SQLException {
+        return null;
     }
 }

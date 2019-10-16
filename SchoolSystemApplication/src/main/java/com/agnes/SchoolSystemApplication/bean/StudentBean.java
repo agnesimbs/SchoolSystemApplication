@@ -1,8 +1,6 @@
 package com.agnes.SchoolSystemApplication.bean;
 
 
-
-
 import com.agnes.SchoolSystemApplication.model.Student;
 
 import javax.annotation.PostConstruct;
@@ -28,7 +26,8 @@ public class StudentBean extends Bean<Student> implements StudentBeanI{
     @Resource
     private SessionContext sessionContext;
     @Override
-    public List<Student> findAll() {
+    public List<Student> findAll()
+    {
         return this.entityManager.createNamedQuery("NQ_FIND_ALL").getResultList();
     }
 
@@ -51,8 +50,8 @@ public class StudentBean extends Bean<Student> implements StudentBeanI{
             }
     }
 
-    @Override
+    /*@Override
     public List<Student> getStudentList() throws SQLException {
         return null;
-    }
+    }*/
 }

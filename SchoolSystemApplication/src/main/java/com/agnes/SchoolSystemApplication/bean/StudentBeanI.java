@@ -9,7 +9,7 @@ import java.util.List;
 
 @Local
 public interface StudentBeanI extends BeanI<Student> {
-    List<Student> findAll();
+    //List<Student> findAll();
     Student findByRegistrationNo(String registrationNumber);
-    List<Student> getStudentList() throws SQLException;
+
 }

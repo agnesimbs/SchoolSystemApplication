@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 public class CourseWs {
 @EJB
     CourseBeanI courseBeanI;
+
 //REQUIRED BY EXAM MODULE
     @POST
     @Path("/findCourseById")
