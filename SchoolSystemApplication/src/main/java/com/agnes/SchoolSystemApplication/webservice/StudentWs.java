@@ -31,6 +31,7 @@ public class StudentWs {
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
     public Response add(String json) {
+
         Gson gson = new Gson();
         Student student = gson.fromJson(json, Student.class);
         student = studentBeanI.add(student);
